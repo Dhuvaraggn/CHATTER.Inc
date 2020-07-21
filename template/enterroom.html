@@ -1,0 +1,33 @@
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN">
+    <title>chatroom</title>
+    
+    <body>
+        <form action="/room" method="POST" >
+            {% csrf_token %}
+            <div >
+                hello
+                <input type="hidden" name="newms" value="True"/>
+                <input type="hidden" name="phoneno"  value= "{{phone}}"> </input>
+                <input type="hidden" name="name"  value= "{{name}}"> </input>
+                {% if errti %}
+                    <p>Room id {{errti}}</p> 
+                {% endif %}
+                <p> {{ name }} </p>
+                <p> {{ phone }} </p>
+                <label>Enter Room Id</label><br>
+                room id<input type="number" name="roomid"><br>
+                <input type="submit" value="Join Room"/><br>
+            </div>           
+        </form>
+        <form action="/new-room" method="POST">
+            {% csrf_token %}
+            <div>
+
+                    <input type="hidden" name="phoneno"  value= "{{phone}}"> </input>
+                    <input type="hidden" name="name"  value= "{{name}}"> </input>
+                    <input type="hidden" name="createnew" value="yes"/>
+                    <input type="submit" value="Create New Room"/>
+            </div>
+        </form>
+    </body>
+</html>

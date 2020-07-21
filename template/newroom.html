@@ -1,0 +1,20 @@
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN">
+    <title>chatroom</title>
+    <body>
+        <form action="roomcreate" method="POST" >
+            {% csrf_token %}
+            <div >
+                {% if errti %}
+                <p> Room id {{errti}} </p>
+                {% endif %}  
+                 <label>Create New Room</label><br>
+                
+                <input type="hidden" name="phoneno"  value= "{{phoneno}}"> </input>
+                <input type="hidden" name="name"  value= "{{name}}"> </input>
+                Room name<input type="text" required="required" name="roomname"/><br>
+                Room id <input type="number" required="required" name="roomid"/><br>
+                <input type="submit" value="Create"/>
+            </div>
+        </form>
+    </body>
+</html>

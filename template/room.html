@@ -1,0 +1,145 @@
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN">
+    <title>chatroom</title>
+    <body>
+         <style>
+            .container {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            }
+
+            /* Darker chat container */
+            .darker {
+            border-color: #ccc;
+            background-color: #ddd;
+            }
+
+            /* Clear floats */
+            .container::after {
+            content: "";
+            clear: both;
+            display: table;
+            }
+            .time-right {
+            float: right;
+            color: #aaa;
+            }
+            
+            .vertical-menu {
+            overflow-y:auto;
+            overflow-x:hidden; 
+            height: 80%;
+            width:70%; 
+            float: left;
+            scroll-behavior: unset;
+            scrollbar-x-position:bottom/* Set a width if you like */
+            }
+
+            .vertical-menu div {
+            background-color: #eee; /* Grey background color */
+            color: black; /* Black text color */
+            display: block; /* Make the links appear below each other */
+            padding: 12px; /* Add some padding */
+            text-decoration: none; /* Remove underline from links */
+            }
+
+            .vertical-menu div:hover {
+            background-color: #ccc; /* Dark grey background on mouse-over */
+            }
+
+            .vertical-menu div.active {
+            background-color: #4CAF50; /* Add a green color to the "active/current" link */
+            color: white;
+            }
+
+            .side-menu {
+            overflow: scroll;
+            height: 80%;
+            width:25%; 
+            float:right/* Set a width if you like */
+            }
+
+            .side-menu div {
+            background-color: #eee; /* Grey background color */
+            color: black; /* Black text color */
+            display: block; /* Make the links appear below each other */
+            padding: 12px; /* Add some padding */
+            text-decoration: none; /* Remove underline from links */
+            }
+
+            .side-menu div:hover {
+            background-color: #ccc; /* Dark grey background on mouse-over */
+            }
+
+            .side-menu div.active {
+            background-color: #4CAF50; /* Add a green color to the "active/current" link */
+            color: white;
+            }
+            .textdes
+            {
+                border-color:royalblue;
+                border-radius: 5px;
+                width: 50%;
+                float: left;
+            }
+            .butdes
+            {
+                background: royalblue;
+                width:100px;
+                height:30px;
+                border:whitesmoke;
+            }
+            .butdes :hover
+            {
+                box-shadow: #4CAF50;
+            }
+         </style>   
+            <div >
+                <div>
+                    <h1 >room {{roomid.roomid}}  </h1>
+                    <div>
+                        <div class="vertical-menu"> 
+                            <div  style="line-height:3em;padding:5px; width: 100%;height: 50%; position: relative;">
+                                {% for msg in messages %}
+                                    <div class="container">
+                                        <div>
+                                            <h3>{{msg.msgfrom}}</h3>
+                                            <h5>{{msg.text}}</h5>
+                                            <span class="time-right"><h5>{{msg.msgtime}}</h5></span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div> 
+                        <div class="side-menu">
+                            <div>
+                                <h2>Members</h2>
+                                {% for mem in members %}
+                                    <div class="container">
+                                        <h2>{{mem.nameofmem}}</h2>
+                                        <h4>{{mem.phoneno}}</h4>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form action="/room/" method="POST" >
+                        {% csrf_token %}
+                        <div>
+                            <input type="hidden" name="newms" value="True"/>
+                            <input type="hidden" name="roomid" value="{{roomid.roomid}}"/>
+                            <input type="hidden" name="phoneno" value="{{phone}}"/>
+                            <input type="text" name="msgtosend" required="required" class="textdes">      
+                            <span><input type="submit" value="send" class="butdes"/></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    </body>
+</html>

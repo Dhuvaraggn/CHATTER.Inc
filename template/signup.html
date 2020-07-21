@@ -1,0 +1,22 @@
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN">
+    <title>chatroom</title>
+    <body>
+        <form action="/" method="POST" >
+            {% csrf_token %}
+            <div >
+                <label>signup</label>
+                name<input type="text" required="required" name="Username"/><br>
+                phone no<input type="tel" name="Phoneno" required="required" /><br>
+                Password<input type="password" name="Password" required="required" /><br>
+                retype Password<input type="password" name="repassword" required="required" /><br>
+                <input type="submit" value="submit"/>
+            </div>
+        </form>
+        <form action="/" method="GET">
+            {% csrf_token %}
+            <div> 
+                           <input type="submit" value="login"/>
+            </div> 
+        </form>
+    </body>
+</html>

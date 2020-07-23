@@ -1,145 +1,287 @@
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN">
-    <title>chatroom</title>
+    <head>
+            <title>chatter.Inc</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    </head>
     <body>
+         
          <style>
-            .container {
+            
+            .containerbox {
+            flex:0 0 ;
             border: 2px solid #dedede;
             background-color: #f1f1f1;
             border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 1px;
+            margin: 1px 0;
             }
-
-            /* Darker chat container */
-            .darker {
-            border-color: #ccc;
-            background-color: #ddd;
-            }
-
             /* Clear floats */
-            .container::after {
-            content: "";
-            clear: both;
-            display: table;
-            }
-            .time-right {
-            float: right;
-            color: #aaa;
-            }
-            
-            .vertical-menu {
-            overflow-y:auto;
-            overflow-x:hidden; 
-            height: 80%;
-            width:70%; 
-            float: left;
-            scroll-behavior: unset;
-            scrollbar-x-position:bottom/* Set a width if you like */
-            }
-
-            .vertical-menu div {
-            background-color: #eee; /* Grey background color */
-            color: black; /* Black text color */
-            display: block; /* Make the links appear below each other */
-            padding: 12px; /* Add some padding */
-            text-decoration: none; /* Remove underline from links */
-            }
-
-            .vertical-menu div:hover {
-            background-color: #ccc; /* Dark grey background on mouse-over */
-            }
-
-            .vertical-menu div.active {
-            background-color: #4CAF50; /* Add a green color to the "active/current" link */
-            color: white;
-            }
-
-            .side-menu {
-            overflow: scroll;
-            height: 80%;
-            width:25%; 
-            float:right/* Set a width if you like */
-            }
-
-            .side-menu div {
-            background-color: #eee; /* Grey background color */
-            color: black; /* Black text color */
-            display: block; /* Make the links appear below each other */
-            padding: 12px; /* Add some padding */
-            text-decoration: none; /* Remove underline from links */
-            }
-
-            .side-menu div:hover {
-            background-color: #ccc; /* Dark grey background on mouse-over */
-            }
-
-            .side-menu div.active {
-            background-color: #4CAF50; /* Add a green color to the "active/current" link */
-            color: white;
-            }
-            .textdes
+           
+            .vertical-menu
+                {   display: flex;
+                    flex-flow: column-reverse wrap-reverse;
+                    flex-basis: 70%;
+                     overflow-y:scroll;
+                    overflow-x:hidden; 
+                    height: 75%;
+                    width:100%; 
+                    float: left;
+                    bottom: 0;
+                    scroll-behavior: smooth;
+                      box-sizing: content-box;
+                }
+            .side-menu
+                {   overflow: scroll;
+                    height: 100px;
+                    width:100%;
+                }
+            .mymsg
             {
-                border-color:royalblue;
-                border-radius: 5px;
-                width: 50%;
-                float: left;
+                float: right;
+                background: #4CAF50
             }
+            .textdes{
+                    border-color:royalblue;
+                    border-radius: 5px;
+                    width: 70%;
+                    height: 7%;
+                    float: left;
+
+                }
             .butdes
+                {   background: royalblue;
+                    border-radius:5px;
+                    width: 30%;
+                    height: 7% ;
+                }
+            .vertical-menu div {
+                background-color: #eee; /* Grey background color */
+                color: black; /* Black text color */
+                display: block; /* Make the links appear below each other */
+                padding: 1px; /* Add some padding */
+                text-decoration: none; /* Remove underline from links */
+                }
+
+            
+            .side-menu div {
+                background-color: #eee; /* Grey background color */
+                color: black; /* Black text color */
+                display: block; /* Make the links appear below each other */
+                padding: 1px; /* Add some padding */
+                text-decoration: none; /* Remove underline from links */
+                }
+
+                .side-menu div:hover {
+                background-color: #ccc; /* Dark grey background on mouse-over */
+                }
+
+                .side-menu div.active {
+                background-color: #4CAF50; /* Add a green color to the "active/current" link */
+                color: white;
+                }
+
+
+                    .sidenav {
+                    height: 100%;
+                    width: 0;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color:rgb(24, 243, 141);
+                    overflow-x: scroll;
+                    overflow-y: scroll;
+                    transition: 0.5s;
+                    padding-top: 60px;
+                    }
+
+                    .sidenav a {
+                    padding: 8px 8px 8px 32px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                    }
+
+                    .sidenav a:hover {
+                    color: #f1f1f1;
+                    }
+
+                    .sidenav .closebtn {
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                    }
+            @media only screen and (min-width: 768px) 
             {
-                background: royalblue;
-                width:100px;
-                height:30px;
-                border:whitesmoke;
-            }
-            .butdes :hover
-            {
-                box-shadow: #4CAF50;
+                .containerbox {
+                    flex:0 0;
+                border: 2px solid #dedede;
+                background-color: #f1f1f1;
+                border-radius: 5px;
+                padding: 1px;
+                margin: 1px 0;
+                }
+                .vertical-menu {
+                display: flex;
+                flex-flow: column-reverse wrap-reverse;
+                flex-basis: 70%;
+                overflow-y:auto;
+                overflow-x:hidden; 
+                height: 70%;
+                width:100%; 
+                float: left;
+                bottom:0;
+                scroll-behavior: smooth;
+                
+                }
+
+                
+
+                .side-menu {
+                overflow: scroll;
+                height: 80%;
+                width:30%; 
+                float:right/* Set a width if you like */
+                }
+
+                .textdes
+                {
+                    border-color:royalblue;
+                    border-radius: 5px;
+                    width: 70%;
+                    height: 10%;
+                    float: left;
+                }
+                .butdes
+                {   font-size: 2vw;
+                    background: royalblue;
+                    border-radius:5px;
+                    width:30%;
+                    height:10%;
+                    border:whitesmoke;
+                }
+                .butdes :hover
+                {
+                    box-shadow: #4CAF50;
+                }
+                
             }
          </style>   
             <div >
                 <div>
-                    <h1 >room {{roomid.roomid}}  </h1>
-                    <div>
-                        <div class="vertical-menu"> 
-                            <div  style="line-height:3em;padding:5px; width: 100%;height: 50%; position: relative;">
+                    <span><div style="background: rgb(236, 87, 32)"><h2  >Chatter.Inc Room {{roomid.roomid}}  </h2></div></span>
+                
+                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; Members</span>
+                    <script>
+                            function openNav() {
+                              document.getElementById("mySidenav").style.width = "50%";
+                              document.getElementById("mySidenav").style.cssFloat="right";
+                            }
+                            
+                            function closeNav() {
+                              document.getElementById("mySidenav").style.width = "0";
+                            }
+                    </script>
+                 </div>
+                    
+                    <style> 
+                            #t { 
+                                height: 100px; 
+                                width: 300px; 
+                                background: green; 
+                                color: white; 
+                                text-align:justify; 
+                            } 
+                        </style> 
+                     <script> 
+                        function godown()
+                        {   console.log("scrollbar started  ")
+                            var end=document.getElementById("fiscroll");
+                            var inl=document.getElementById('msgscroll');
+                            console.log(end);
+                            console.log(end.scrollHeight)
+                            console.log(inl.scrollHeight)
+                            var he=inl.scrollHeight-end.clientHeight
+                            console.log(he)
+                            end.scrollTop=he
+                           
+                        }
+                            
+                        </script> 
+                    <div id="fiscroll">
+                        <div id="msgscroll" class="vertical-menu" onclick="closeNav()"> 
+                            <script>godown();</script> 
+                            <div id="heiscroll" >
                                 {% for msg in messages %}
-                                    <div class="container">
-                                        <div>
-                                            <h3>{{msg.msgfrom}}</h3>
-                                            <h5>{{msg.text}}</h5>
-                                            <span class="time-right"><h5>{{msg.msgtime}}</h5></span>
+                                    {% if name == msg.msgfrom %}
+                                    <div class="containerbox    ">
+                                        <div style="background:rgb(248, 136, 95)" >
+                                            <p style=" padding-right:20%;float:right;font:bolder; font-size: 3.5vw;">{{msg.msgfrom}}<p><br/>
+                                            <p  style="padding-right:0%;float:right;font:larger;font-size: 3.5vw;">{{msg.text}}</p><br/>
+                                            <br/>
+                                            <p  style="padding-right:0%;float:right;font-size: 2vw;">{{msg.msgtime}}</p><br/>    
+                                           
                                         </div>
                                     </div>
+                                    {% else %}
+                                    <div class="containerbox">
+                                        <div style="background:rgb(245, 248, 248)">
+                                                <h2 style=" padding-left:15%;float:left;font:bolder; font-size: 3vw;">{{msg.msgfrom}}</h2><br>
+                                                <h2 style="padding-left:6%;float:left;font:larger;font-size: 3vw;">{{msg.text}}</h2><br>
+                                                    <h4 style="padding-left:6%;float:left;font-size: 2vw;">{{msg.msgtime}}</h4><br>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                 
                                 {% endfor %}
                             </div>
                         </div> 
-                        <div class="side-menu">
+                    </div>
+                 
+                
+            </div>
+            <div style="width:100%; height: 70%">
+
+            </div>
+        </body>
+        <body>
+                <div>
+                        <div>
                             <div>
-                                <h2>Members</h2>
-                                {% for mem in members %}
-                                    <div class="container">
-                                        <h2>{{mem.nameofmem}}</h2>
-                                        <h4>{{mem.phoneno}}</h4>
-                                    </div>
-                                {% endfor %}
+                                    <form action="/room/" method="POST" >
+                                        {% csrf_token %}
+                                        <div>
+                                            <input type="hidden" name="newms" value="True"/>
+                                            <input type="hidden" name="roomid" value="{{roomid.roomid}}"/>
+                                            <input type="hidden" name="phoneno" value="{{phone}}"/>
+                                            <input type="text" autocomplete="off" style="font-size: 1.1vw;" name="msgtosend" required="required" class="textdes">      
+                                            <span><input type="submit" value="send" class="butdes"/></span>
+                                        </div>
+                                    </form>
                             </div>
+                            
                         </div>
                     </div>
-                </div>
 
-                <div>
-                    <form action="/room/" method="POST" >
-                        {% csrf_token %}
+                    <div id="mySidenav" class="sidenav">
                         <div>
-                            <input type="hidden" name="newms" value="True"/>
-                            <input type="hidden" name="roomid" value="{{roomid.roomid}}"/>
-                            <input type="hidden" name="phoneno" value="{{phone}}"/>
-                            <input type="text" name="msgtosend" required="required" class="textdes">      
-                            <span><input type="submit" value="send" class="butdes"/></span>
+                            <h2>Members</h2>
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            {% for mem in members %}
+                                <div class="container">
+                                    <h3>{{mem.nameofmem}}</h3>
+                                    <h3 style="padding-left: 10px">{{mem.phoneno}}</h3>
+                                </div>
+                            {% endfor %}
                         </div>
-                    </form>
                 </div>
-            </div>
-
-    </body>
+         </body>
 </html>

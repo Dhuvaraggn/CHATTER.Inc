@@ -77,7 +77,7 @@ def roomcreate(request):
                     print(memsend)
                     me.append(memsend)
                     print("end")
-                return render(request,'room.html',{'phone':dict["phoneno"],'roomid':send,'messages':ms,'members':me})
+                return render(request,'room.html',{'name':dict["name"],'phone':dict["phoneno"],'roomid':send,'messages':ms,'members':me})
 def rooms(request):
     print("started new msg")
     if request.method=='POST':
@@ -109,7 +109,7 @@ def rooms(request):
                     print(memsend)
                     me.append(memsend)
                     print("end")
-                return render(request,'room.html',{'phone':ph,'roomid':send,'messages':ms,'members':me})
+                return render(request,'room.html',{'name':acc.name,'phone':ph,'roomid':send,'messages':ms,'members':me})
 
 def room(request):
     print("room")
@@ -146,8 +146,21 @@ def room(request):
                 me.append(memsend)
                 print("end")
             print(me)
-            return render(request,'room.html',{'phone':ph,'roomid':send,'messages':ms,'members':me})
+            return render(request,'room.html',{'name':check["name"],'phone':ph,'roomid':send,'messages':ms,'members':me})
         else:
             print('no room present')
             return render(request,'enterroom.html',{'errti':'Wrong roomid plz enter correct roomid or create new room id','name':check["name"],'phone':check["phoneno"]})
-   
+
+def members(request):
+    if request.method=="POST":
+        msg=request.POST
+        print(msg)
+        r=Room.objects.filter(roomid=msg["room"])[0]
+        me=r.member_set.all()
+        mems=[]
+        for k in me:
+            memse=MemberSerializer(k).data
+            print(memse)
+            mems.append(memse)
+
+    return render(request,'members.html',{'members':mems})

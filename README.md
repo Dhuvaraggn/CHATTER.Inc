@@ -45,10 +45,16 @@ Prerequisites
      #Run the server
 
      python manage.py runserver
-
+     
    #your server is up on port 8000
 
    #Try opening http://localhost:8000/ in the browser. Now you are good to go. plz at first create a account my clicking sign up first time. then its fun....
    FunPandrooo!!!!!!!!!
+   
+  6.create a superuser to access the DB from http:/localhost:8000/admin/
+  
+      python manage.py createsuperuser
+   enter name of user and password and kudos your running a chatter.Inc messenger.
+   
 
 URLS start page : http://localhost:8000/
